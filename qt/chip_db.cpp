@@ -134,9 +134,8 @@ QString ChipDb::findFile(QString fileName)
         (fileName = QStandardPaths::locate(QStandardPaths::ConfigLocation,
         fileName)).isNull())
     {
-        QMessageBox::critical(nullptr, QObject::tr("Error"),
-            QObject::tr("Chip DB file %1 was not"
-            " found in %2;%3").arg(fileName).arg(QDir::currentPath()).
+        QMessageBox::critical(nullptr, QObject::tr("错误"),
+            QObject::tr("在 %2;%3 中找不到芯片数据库文件 %1").arg(fileName).arg(QDir::currentPath()).
             arg(QStandardPaths::standardLocations(QStandardPaths::
             ConfigLocation).join(';')));
         return QString();
@@ -156,8 +155,8 @@ void ChipDb::readFromCvs(void)
     dbFile.setFileName(fileName);
     if (!dbFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        QMessageBox::critical(nullptr, QObject::tr("Error"),
-            QObject::tr("Failed to open chip DB file: %1, error: %2")
+        QMessageBox::critical(nullptr, QObject::tr("错误"),
+            QObject::tr("无法打开芯片数据库文件: %1, 错误: %2")
             .arg(fileName).arg(dbFile.errorString()));
         return;
     }
@@ -184,8 +183,8 @@ int ChipDb::readCommentsFromCsv(QFile &dbFile, QString &comments)
 {
     if (!dbFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        QMessageBox::critical(nullptr, QObject::tr("Error"),
-            QObject::tr("Failed to open chip DB file: %1, error: %2")
+        QMessageBox::critical(nullptr, QObject::tr("错误"),
+            QObject::tr("无法打开芯片数据库文件: %1, 错误: %2")
             .arg(dbFile.fileName()).arg(dbFile.errorString()));
         return -1;
     }
@@ -224,8 +223,8 @@ void ChipDb::writeToCvs(void)
     if (!dbFile.open(QIODevice::WriteOnly | QIODevice::Truncate |
         QIODevice::Text))
     {
-        QMessageBox::critical(nullptr, QObject::tr("Error"),
-            QObject::tr("Failed to open chip DB file: %1, error: %2")
+        QMessageBox::critical(nullptr, QObject::tr("错误"),
+            QObject::tr("无法打开芯片数据库文件: %1, 错误: %2")
             .arg(fileName).arg(dbFile.errorString()));
         return;
     }

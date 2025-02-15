@@ -25,19 +25,19 @@ void Logger::logHandler(QtMsgType type, const QMessageLogContext &context ,
 
     switch (type) {
     case QtDebugMsg:
-        prefix = "Debug: ";
+        prefix = "调试: ";
         break;
     case QtInfoMsg:
-        prefix = "Info: ";
+        prefix = "信息: ";
         break;
     case QtWarningMsg:
-        prefix = "Warning: ";
+        prefix = "警告: ";
         break;
     case QtCriticalMsg:
-        prefix = "Error: ";
+        prefix = "错误: ";
         break;
     case QtFatalMsg:
-        prefix = "Fatal error: ";
+        prefix = "致命错误: ";
         break;
     }
 
@@ -90,7 +90,7 @@ void Logger::putInstance()
 {
     if (!refCount)
     {
-        qWarning() << "Logger is released without being allocated";
+        qWarning() << "记录器在未分配的情况下被释放";
         return;
     }
 
